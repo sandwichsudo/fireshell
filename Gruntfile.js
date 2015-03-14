@@ -26,7 +26,7 @@ module.exports = function (grunt) {
    * Dynamically load npm tasks
    */
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-
+  grunt.loadNpmTasks('grunt-hogan');
   /**
    * FireShell Grunt config
    */
@@ -96,12 +96,26 @@ module.exports = function (grunt) {
         '<%= project.assets %>/css/style.prefixed.css'
       ]
     },
-
     /**
-     * JSHint
-     * https://github.com/gruntjs/grunt-contrib-jshint
-     * Manage the options inside .jshintrc file
+     * Grunt-hogan
+     * https://www.npmjs.com/package/grunt-hogan
+     * compile templates
      */
+    hogan: {
+      //desired target name 
+      mytarget : {
+        //path to input template 
+        src : 'src/js/templates/*.hogan',
+        //output path, relative to Gruntfile.js 
+        dest : 'src/js/templates.js',
+        options : { binderName: 'hulk' }
+      }
+    },
+    /**
+    * JSHint
+    * https://github.com/gruntjs/grunt-contrib-jshint
+    * Manage the options inside .jshintrc file
+    */
     jshint: {
       files: [
         'src/js/*.js',
@@ -111,7 +125,6 @@ module.exports = function (grunt) {
         jshintrc: '.jshintrc'
       }
     },
-
     /**
      * Concatenate JavaScript files
      * https://github.com/gruntjs/grunt-contrib-concat
@@ -230,19 +243,6 @@ module.exports = function (grunt) {
     },
 
     /**
-     * Build bower components
-     * https://github.com/yatskevich/grunt-bower-task
-     */
-    bower: {
-      dev: {
-        dest: '<%= project.assets %>/components/'
-      },
-      dist: {
-        dest: '<%= project.assets %>/components/'
-      }
-    },
-
-    /**
      * Opens the web server in the browser
      * https://github.com/jsoverson/grunt-open
      */
@@ -259,6 +259,10 @@ module.exports = function (grunt) {
      * Livereload the browser once complete
      */
     watch: {
+      hogan: {
+        files: '<%= project.src %>/js/templates{,*/}*.hogan',
+        tasks: ['hogan']
+      },
       concat: {
         files: '<%= project.src %>/js/{,*/}*.js',
         tasks: ['concat:dev', 'jshint']
@@ -286,8 +290,8 @@ module.exports = function (grunt) {
    * Run `grunt` on the command line
    */
   grunt.registerTask('default', [
+    'hogan',
     'sass:dev',
-    'bower:dev',
     'autoprefixer:dev',
     'cssmin:dev',
     'jshint',

@@ -1,0 +1,8 @@
+<label for="{{id}}">
+	{{label}}
+    <select id="{{id}}" class="form-control">
+		{{#options}}
+		<option value="{{value}}">{{name}}</option>
+		{{/options}}
+    </select>
+</label>

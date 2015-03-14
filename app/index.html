@@ -18,44 +18,90 @@
   <body>
 
     <header class="header" role="banner">
-      <div class="logo">
+      <!-- <div class="logo">
         <a href="/">
           <img src="assets/img/logo.svg" alt="Logo">
         </a>
-      </div>
-      <nav class="nav" role="navigation">
-        <ul>
-          <li>
-            <a href="/"></a>
-          </li>
-        </ul>
+      </div> -->
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">FMEA tool</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Symptoms <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">Requirements</a></li>
+              <li><a href="#">Effects</a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <!-- <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Link</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Symptoms</a></li>
+                  <li><a href="#">Requirements</a></li>
+                  <li><a href="#">Effects</a></li>
+                </ul>
+              </li>
+            </ul> -->
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
       </nav>
+      
     </header>
 
-    <main class="main" role="main">
-
-    </main>
+   
 
     <aside class="sidebar" role="complementary">
+      <div id="filters-container">
+        <form>
+          <div class="form-group">
+            <label for="component-type">
+                Component Type
+                <select id="component-type" class="form-control">
+                  <option value="all">All Components</option>
+                  <option value="COM001">Motor</option>
+                  <option value="COM002">Position Sensor</option>
+                </select>
+            </label>
 
+            
+
+            <div>
+            <input type="submit" class="btn btn-primary" value="Apply filters">
+        </form>
+      </div>
     </aside>
-
+    <main class="main" role="main">
+      <div id="listcontainer"></div>
+    </main>
     <footer class="footer" role="contentinfo">
 
     </footer>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="assets/components/jquery.js"><\/script>');</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://twitter.github.com/hogan.js/builds/3.0.1/hogan-3.0.1.js"></script>
+
     <script src="assets/js/scripts.min.js"></script>
 
-    <script>
-    (function(f,i,r,e,s,h,l){i['GoogleAnalyticsObject']=s;f[s]=f[s]||function(){
-    (f[s].q=f[s].q||[]).push(arguments)},f[s].l=1*new Date();h=i.createElement(r),
-    l=i.getElementsByTagName(r)[0];h.async=1;h.src=e;l.parentNode.insertBefore(h,l)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-XXXXXXXX-XX');
-    ga('send', 'pageview');
-    </script>
-
+ 
   </body>
 </html>

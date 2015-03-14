@@ -7,6 +7,8 @@ style.min.css
 style.unprefixed.css
 style.prefixed.css
 scripts.min.js
+templates.js
+*.css.map
 
 ## Node.js
 lib-cov
