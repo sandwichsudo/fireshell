@@ -20,6 +20,27 @@
     var $symptomList =$(templates.linkList.render({listitems:symptomListItems}));
     var $listContainer = $("#listcontainer");
     $listContainer.append($symptomList);
+    //add search filter
+    $listContainer.btsListFilter('#listSearch', 
+        {
+            itemEl:'.link-list-item', 
+            itemChild: '.item-details',
+            itemFilter: function(item, val) {
+                //val = val.replace(new RegExp("^[.]$|[\[\]|()*]",'g'),'');
+                //val = val.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+                var $item = $(item);
+                //check both items 
+                var text1 = $item.find('.item-key').text();
+                var text2 = $item.find('.item-desc').text();
+                val = val && val.replace(new RegExp("[({[^.$*+?\\\]})]","g"),'');
+                
+                var regSearch = new RegExp(val,'ig');
+
+
+                return  regSearch.test( text1 ) || regSearch.test( text2 );
+            }
+        }
+    );
     //for the filters
     var contextId= 'context-select';
     $('#component-type').on('change',function(){

@@ -1,13 +1,12 @@
 .link-list{
     list-style: none;
+    padding-left:0;
+    border-bottom: solid 3px $list-border-color;
     .link-list-item{
       border: solid 1px $list-border-color;
       border-bottom-width: 0;
       padding: 10px;
       position:relative;
-      &:last-child{
-        border-bottom-width: 3px;
-      }
     }
 }
 .item-details{
