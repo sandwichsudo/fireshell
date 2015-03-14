@@ -1,0 +1,28 @@
+.link-list{
+    list-style: none;
+    .link-list-item{
+      border: solid 1px $list-border-color;
+      border-bottom-width: 0;
+      padding: 10px;
+      position:relative;
+      &:last-child{
+        border-bottom-width: 3px;
+      }
+    }
+}
+.item-details{
+    display: inline-block;
+    margin-bottom: 0;
+    .item-desc{
+      display: inline;
+    }
+    .item-key{
+      margin-right: 5px;
+    }
+    .glyphicon-chevron-right{
+        position: absolute;
+        top: 50%;
+        margin-top: - ($icon-height)/2;
+        right: 15px;
+    }
+}
