@@ -2,12 +2,24 @@
     list-style: none;
     padding-left:0;
     border-bottom: solid 3px $list-border-color;
-    .link-list-item{
-      border: solid 1px $list-border-color;
-      border-bottom-width: 0;
-      padding: 10px;
-      position:relative;
+    .link-wrap{
+      text-decoration:none;
     }
+}
+.link-list-item{
+  border: solid 1px $list-border-color;
+  border-bottom-width: 0;
+  padding: 10px;
+  position:relative;
+  @include respond-to("small-medium-screens"){
+    padding-right:25px;
+    .glyphicon-chevron-right{
+        position: absolute;
+        top: 50%;
+        margin-top: - ($icon-height)/2;
+        right: 15px;
+    }
+  }
 }
 .item-details{
     display: inline-block;
@@ -18,10 +30,5 @@
     .item-key{
       margin-right: 5px;
     }
-    .glyphicon-chevron-right{
-        position: absolute;
-        top: 50%;
-        margin-top: - ($icon-height)/2;
-        right: 15px;
-    }
 }
+
