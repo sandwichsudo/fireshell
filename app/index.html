@@ -62,21 +62,22 @@
             <label for="component-type">
               Component Type
               <select id="component-type" class="form-control">
-                <option value="all">All Components</option>
-                <option value="COM001">Motor</option>
-                <option value="COM002">Position Sensor</option>
+                <option value="">All Components</option>
+                <option value="COM001">Motors</option>
+                <option value="COM002">Position Sensors</option>
               </select>
             </label>
 
             
 
             <div>
-              <input type="submit" class="btn btn-primary" value="Apply filters">
+              <!-- <input type="submit" class="btn btn-primary" value="Apply filters"> -->
             </form>
           </aside>
           <main class="main col-md-7" role="main">
             <h1>Choose a symptom</h1>
-            <p>Use the filters to narrow the results, or the search bar to find results</h1>
+            <p>Use the filters to narrow the results, or the search bar to find results</p>
+            <p>Showing <span id="pageSize"></span> of <span id="resultsCount"></span> symptoms related to <span id="componentTypeName"> all components</span>
             <form>
               <div class="form-group">
                 <label for="listSearch">Search list<input id="listSearch" class="form-control" type="search"></input></label>
