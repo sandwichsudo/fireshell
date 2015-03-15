@@ -28,13 +28,34 @@
         {key:'D015',desc:'Bent teeth and cracks in the tooth root filets',href:'#',filtervalues:['COM002','p0']},
         {key:'D016',desc:'No observable motion at motor point',href:'#',filtervalues:['COM001','t0']},
         {key:'D017',desc:'The motor will draw excessive current',href:'#',filtervalues:['COM001','t1']},
-        {key:'D018',desc:'Bent teeth and cracks in the tooth root filets',href:'#',filtervalues:['COM002','p0']}
+        {key:'D018',desc:'Bent teeth and cracks in the tooth root filets',href:'#',filtervalues:['COM002','p0']},
+        {key:'D019',desc:'The motor will draw excessive current',href:'#',filtervalues:['COM001','t1']},
+        {key:'D020',desc:'Bent teeth and cracks in the tooth root filets',href:'#',filtervalues:['COM002','p0']}
     ];
+    var numberShown = 10;
 
-    //load full list on load
-    var $symptomList =$(templates.linkList.render({listitems:symptomListItems}));
     var $listContainer = $("#listcontainer");
-    $listContainer.append($symptomList);
+
+    function loadResults(data, startindex, endIndex){
+        var listToShow = data;
+        if(endIndex){
+            listToShow = data.slice(startindex,endIndex);
+        }
+        var $symptomList =$(templates.linkList.render({listitems:listToShow}));
+        if(startindex===0){
+            $listContainer.empty();
+            $listContainer.append($symptomList);
+        }
+        else{
+            //get rid of ul
+            var $children = $symptomList.children();
+            $listContainer.find('ul').append($children);
+        }
+        
+    }
+    //load 10 to start
+    loadResults(symptomListItems,0,numberShown);
+    
     //add search filter
     $listContainer.btsListFilter('#listSearch', 
         {
@@ -56,6 +77,17 @@
             }
         }
     );
+    //load more button
+    var increment = 5;
+    $("#loadMore").on("click", function(){
+        loadResults(symptomListItems,numberShown,numberShown+increment);
+        numberShown+=increment;
+    });
+
+    $("#showAll").on("click", function(){
+        loadResults(symptomListItems,0);
+    });
+
     //for the filters
     var contextId= 'context-select';
     $('#component-type').on('change',function(){
