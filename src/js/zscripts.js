@@ -175,9 +175,9 @@
        
         //return appropriate number of items
         //first page is page 0
-        //if page size is -1 load all the pages
+        //if page number is -1 load all the pages
         var resultsToReturn;
-        if(pageSize===-1){
+        if(pageNumber===-1){
             resultsToReturn=filteredItems;
         }
         else{
