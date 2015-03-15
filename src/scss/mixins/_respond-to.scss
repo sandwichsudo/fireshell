@@ -12,6 +12,9 @@
   @else if $media == medium-screens-up {
     @media only screen and (min-width: $break-medium + 1) { @content; }
   }
+  @else if $media == handheld-screens-up {
+    @media only screen and (min-width: $break-small + 1) { @content; }
+  }
   @else if $media == small-medium-screens {
      @media only screen and (min-width: 0) and (max-width: $break-medium - 1) { @content; }
   }

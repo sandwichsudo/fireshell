@@ -77,15 +77,20 @@
           <main class="main col-md-7" role="main">
             <h1>Choose a symptom</h1>
             <p>Use the filters to narrow the results, or the search bar to find results</p>
-            <p>Showing <span id="pageSize"></span> of <span id="resultsCount"></span> symptoms </p>
+            
             <div id="filters" class="filters"><p>The following filters are applied</p></div>
+            <div class="search-and-results">
+              <form>
+                <fieldset class="form-group">
+                  <label for="listSearch">Search list<input id="listSearch" class="form-control" type="search"></input></label>
+                </fieldset>
+              </form>
+              <p class="results-count-container"><span id="resultsCount" class="badge results-badge"></span> results </p>
               
-            <form>
-              <div class="form-group">
-                <label for="listSearch">Search list<input id="listSearch" class="form-control" type="search"></input></label>
-              </fieldset>
-            </form>
-            <div id="listcontainer"></div>
+            </div>
+            <div id="listcontainer">
+            </div>
+            
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-default" id="loadMore">Load more</button>
               <button type="button" class="btn btn-default" id="showAll">Show all</button>

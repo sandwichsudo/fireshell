@@ -9,4 +9,18 @@
 	.filters{
 		margin-bottom: 10px;
 	}
+	.results-badge{
+		background-color:$results-badge-bg-color;
+	}
+	@media only screen and (min-width: $break-small + 30) {
+		.results-count-container{
+			position:absolute;
+			bottom:0;
+			right:15px;
+			margin:0;
+		}
+	}
+	.search-and-results{
+		position:relative;
+	}
 }

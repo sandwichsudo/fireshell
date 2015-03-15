@@ -54,7 +54,7 @@
         var listToShow = data;
         var $symptomList =$(templates.linkList.render({listitems:listToShow}));
         if(!append){
-            $listContainer.empty();
+            $listContainer.find('ul').remove();
             $listContainer.append($symptomList);
         }
         else{
