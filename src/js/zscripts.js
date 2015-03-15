@@ -13,7 +13,22 @@
     var symptomListItems= [
         {key:'D001',desc:'No observable motion at motor point',href:'#',filtervalues:['COM001','t0']},
         {key:'D002',desc:'The motor will draw excessive current',href:'#',filtervalues:['COM001','t1']},
-        {key:'D003',desc:'Bent teeth and cracks in the tooth root filets',href:'#',filtervalues:['COM002','p0']}
+        {key:'D003',desc:'Bent teeth and cracks in the tooth root filets',href:'#',filtervalues:['COM002','p0']},
+        {key:'D004',desc:'No observable motion at motor point',href:'#',filtervalues:['COM001','t0']},
+        {key:'D005',desc:'The motor will draw excessive current',href:'#',filtervalues:['COM001','t1']},
+        {key:'D006',desc:'Bent teeth and cracks in the tooth root filets',href:'#',filtervalues:['COM002','p0']},
+        {key:'D007',desc:'No observable motion at motor point',href:'#',filtervalues:['COM001','t0']},
+        {key:'D008',desc:'The motor will draw excessive current',href:'#',filtervalues:['COM001','t1']},
+        {key:'D009',desc:'Bent teeth and cracks in the tooth root filets',href:'#',filtervalues:['COM002','p0']},
+        {key:'D010',desc:'No observable motion at motor point',href:'#',filtervalues:['COM001','t0']},
+        {key:'D011',desc:'The motor will draw excessive current',href:'#',filtervalues:['COM001','t1']},
+        {key:'D012',desc:'Bent teeth and cracks in the tooth root filets',href:'#',filtervalues:['COM002','p0']},
+        {key:'D013',desc:'No observable motion at motor point',href:'#',filtervalues:['COM001','t0']},
+        {key:'D014',desc:'The motor will draw excessive current',href:'#',filtervalues:['COM001','t1']},
+        {key:'D015',desc:'Bent teeth and cracks in the tooth root filets',href:'#',filtervalues:['COM002','p0']},
+        {key:'D016',desc:'No observable motion at motor point',href:'#',filtervalues:['COM001','t0']},
+        {key:'D017',desc:'The motor will draw excessive current',href:'#',filtervalues:['COM001','t1']},
+        {key:'D018',desc:'Bent teeth and cracks in the tooth root filets',href:'#',filtervalues:['COM002','p0']}
     ];
 
     //load full list on load
