@@ -259,7 +259,7 @@
             
             if(key.hasOwnProperty(selectedValue)){
                 var $contextSelectComponent = $(templates.select.render({id:contextId,label:'Component name',options:key[selectedValue]}));
-                $contextSelectComponent.insertAfter($selector,componentNameId);
+                $contextSelectComponent.insertAfter($selector.parents('.form-group'));
                 var $contextSelect=$contextSelectComponent.find('select');
                 updateFilterInfo($contextSelect,componentNameId,true);
                 

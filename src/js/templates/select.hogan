@@ -1,8 +1,10 @@
-<label for="{{id}}">
-	{{label}}
-    <select id="{{id}}" class="form-control">
-		{{#options}}
-		<option value="{{value}}">{{name}}</option>
-		{{/options}}
-    </select>
-</label>
+<div class="form-group">
+	<label for="{{id}}">
+		{{label}}
+	    <select id="{{id}}" class="form-control">
+			{{#options}}
+			<option value="{{value}}">{{name}}</option>
+			{{/options}}
+	    </select>
+	</label>
+</div>
