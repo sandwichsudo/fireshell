@@ -43,7 +43,9 @@
     var pageSize=10;
     var $listSize = $("#pageSize");
     var $resultCount = $("#resultsCount");
-    var $componentTypeName = $("#componentTypeName");
+    var componentTypeNameId="componentTypePlayback";
+    var componentNameId="componentNamePlayback";
+    var $filterContainer = $("#filters").hide();
     
     /*
         From the data, append the results to the list
@@ -197,6 +199,51 @@
         doSearch(-1,false);
     });
 
+    function resetFilter($selector){
+        //set filter back to default
+        $selector.val("");
+        //trigger change to update results
+        $selector.change();
+    }
+
+    function updateFilterInfo($selector,playbackId){
+        
+        
+        var selectedOptionVal="";
+        if($selector){
+             var $selectedOption = $selector.find('option').filter(function(index,el){
+                return el.selected;
+            });
+            var selectedOptionText = $selectedOption.text();
+            selectedOptionVal=$selectedOption.val();
+        }
+       
+        
+        if(selectedOptionVal!==""){
+             //show a button
+            var $replacement = $(templates.removeFilterButton.render({id:playbackId,text:selectedOptionText}));
+            $replacement.on('click',function(e){
+                resetFilter($selector);
+            });
+            var $button= $("#"+playbackId);
+            if($button.length===0){
+                $filterContainer.append($replacement);
+            }
+            else{
+                $button.replaceWith( $replacement);
+            }
+            
+            $filterContainer.show();
+        }
+        else{
+            $("#"+playbackId).remove();
+            if($filterContainer.children().length===1){
+                $filterContainer.hide();
+            }
+        }
+        
+    }
+
     //for the filters
 
     $componentType.on('change',function(){
@@ -204,31 +251,28 @@
         var selectedValue = this.value; 
 
         $('#'+contextId).parent().remove();
+        updateFilterInfo($selector,componentTypeNameId,false);
+        //update displayed data
+        doSearch(0);
         //update ui
         if(selectedValue){
             
             if(key.hasOwnProperty(selectedValue)){
-                var $contextSelect = $(templates.select.render({id:contextId,label:'Component name',options:key[selectedValue]}));
-                $contextSelect.insertAfter($selector);
-                var $selectedOption = $contextSelect.find('option').filter(function(index,el){
-                    return el.selected;
-                });
-               
-                $componentTypeName.text($selectedOption.text());
-                //update displayed data
-                var searchTerm = $searchInput.val();
-                var filteredData = getFilteredJson(getFilterValues(), searchTerm,0, pageSize);
-                $resultCount.text(filteredData.totalResults);
-                loadResults(filteredData.results);
+                var $contextSelectComponent = $(templates.select.render({id:contextId,label:'Component name',options:key[selectedValue]}));
+                $contextSelectComponent.insertAfter($selector,componentNameId);
+                var $contextSelect=$contextSelectComponent.find('select');
+                updateFilterInfo($contextSelect,componentNameId,true);
+                
 
                 $contextSelect.on("change",function(e){
-                    var $selectedOption = $(this).find('option').filter(function(index,el){
-                        return el.selected;
-                    });
-                    $componentTypeName.text($selectedOption.text());
+                    updateFilterInfo($(this),componentNameId,true);
                     doSearch(0);
                 });
             }
+        }
+        else{
+            $("#"+contextId).remove();
+            updateFilterInfo(null,componentNameId,true);
         }
         
        

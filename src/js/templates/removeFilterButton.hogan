@@ -1,0 +1,4 @@
+ <button id="{{id}}" type="button" class="btn btn-info filter-remove-btn">
+ 	<span >{{text}}</span>
+ 	<span class="glyphicon glyphicon-remove remove-filter-icon" aria-hidden="true"><span class="sr-only">remove filter</span>
+ </button>
